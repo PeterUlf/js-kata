@@ -4,10 +4,10 @@
 // and returns a mocified version of that string.
 
 
-function mockify(myString) {
+function mockify(myString = this) {
     const letters = Array.from(myString);
-    var arrayLength = letters.length;
-    let myNewStringArray = [];
+    const arrayLength = letters.length;
+    const myNewStringArray = [];
     let newLetter = "";
     for (var i = 0; i < arrayLength; i++) {
         //alert(letters[i]);
@@ -17,6 +17,7 @@ function mockify(myString) {
         newLetter = letters[i].toLowerCase();
 
         if (Math.random() > 0.5) {
+            //alert("greater than zero");
             newLetter = newLetter.toUpperCase();
         }
         myNewStringArray.push(newLetter);
@@ -24,9 +25,10 @@ function mockify(myString) {
 
 
     }
-    console.log(myNewStringArray.join(""));
+    return myNewStringArray.join("");
+
 
 }
 
-
+String.prototype.mockify = mockify;
 console.log(mockify('This is a test'));
